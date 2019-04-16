@@ -1,0 +1,179 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.credential-input{
+  width: 300px;
+  height: 40px;
+  font-size: 20px;
+  margin: 10px auto;
+  display: block;
+}
+button{
+  height: 40px;
+  width: 100px;
+  margin: 10px;
+}
+.message-box{
+  position: fixed; 
+  top: unset;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 25px;
+}
+.menubar{
+  background-color: #eeeeee;
+  display: flex;
+  padding: 0px;
+}
+.menubar > *{
+  padding: 10px;
+  display: inline;
+}
+.chatListMenubar{
+  height: 60px;
+}
+.chatListMenubar > *{
+  margin: auto 5px;
+}
+.chatListMenubar :first-child{
+  margin-left: auto !important;
+}
+.createNewChatMenuBar{
+  flex-direction: column;
+  font-weight: 500;
+}
+.chatListAndOthers{
+  padding: 0px !important;
+  position: absolute;
+  max-height: 100%;
+}
+.messagingEnv{
+  position: absolute;
+  right: 0%;
+  top: 0;
+  height: 100%;
+  padding: 0px;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #e5ddd5;
+  z-index: -1;
+}
+.messagingEnvBg{
+  background-image: url('../images/MessagingEnvBg.png');
+  background-repeat: repeat repeat;
+  background-size: 366.5px 666px;
+  right: 0px;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.06;
+  z-index: -1;
+}
+.chatList{
+  height: -webkit-fill-available; 
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-top: 60px;
+  z-index: -1;
+}
+.createNewChatWindow{
+  height: -webkit-fill-available;
+  position: absolute;
+  padding: 0px;
+  background-color: #fff;
+}
+i{
+  vertical-align: middle;
+}
+.searchInput{
+  color: #4b4b4b; 
+  width: 100%;
+  height: 40px; 
+  border-radius: 25px; 
+  background-image: url("../icons/search.png"); 
+  background-size: 17px; 
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-position-x: 10px;
+  border: none;
+  outline: none;
+  padding-left: 50px;
+  margin: 6px 12px;
+  font-size: 14px;
+}
+.messagingEnvMenuBar{
+  height: 60px;
+}
+.messagingInputContainer{
+  position: absolute;
+  bottom: 0px;
+  background-color: #efefef;
+  display: flex;
+  height: 62px;
+  width: 100%;
+  padding: 5px;
+}
+.messagingInputContainer > *{
+  margin: auto 10px;
+}
+.messagingInput{
+  width: 100%;
+  border-radius: 21px;
+  outline: none;
+  border: none;
+  height: 42px;
+  padding: 9px 12px 11px 12px;
+}
+.messageItem{
+  border-radius: 7.5px;
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+  max-width: 75%;
+  font-size: 14.2px;
+  line-height: 19px;
+  color: #262626;
+  padding: 6px 7px 8px 9px;
+  position: relative;
+}
+.messageItemTime{
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 11px;
+  height: 15px;
+  line-height: 15px;
+  float: right;
+  bottom: 7px;
+  position: absolute;
+  right: 8px;
+}
