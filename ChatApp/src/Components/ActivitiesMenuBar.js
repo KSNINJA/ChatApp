@@ -9,7 +9,7 @@ export class ActivitiesMenuBar extends React.Component{
     render(){
         if(this.props.currentActivity === 'chatList')
         {
-            return <ChatListMenuBar changeActivity={ this.props.changeActivity } />
+            return <ChatListMenuBar changeActivity={ this.props.changeActivity } logout={this.props.logout} />
         }
         else if(this.props.currentActivity === 'createNewChat')
         {

@@ -19,7 +19,7 @@ export class ChatListAndOthers extends React.Component{
     render(){
         return (
             <div className="col-xs-12 col-sm-4 chatListAndOthers">
-                <ActivitiesMenuBar currentActivity={ this.state.currentActivity }  changeActivity={this.changeCurrentActivity} />
+                <ActivitiesMenuBar currentActivity={ this.state.currentActivity }  changeActivity={this.changeCurrentActivity} logout={ this.props.logout } />
                 <ChatList userId={this.props.userId} changeMessagingEnv={this.props.changeMessagingEnv} updates={this.props.updates} />
                 { this.state.currentActivity === 'createNewChat' ? <CreateNewChatWindow changeMessagingEnv={ this.props.changeMessagingEnv } changeActivity={this.changeCurrentActivity}  username={this.props.username} userId={this.props.userId} /> : null} 
 

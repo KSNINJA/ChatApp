@@ -13,8 +13,14 @@ export class ChatListMenuBar extends React.Component{
                     <MaterialIcon icon="border_color" color="rgb(56,56,56)" background="transparent" size="22" /> 
                 </div>
                 <div>
-                    <MaterialIcon icon="more_vert" color="rgb(56,56,56)" background="transparent"  size="22" /> 
-                </div>   
+                    <div className="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ height: 32, width: 32, fontSize: 22 }} >
+                    </div>
+                    <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-item" onClick={ this.props.logout }>
+                            Logout
+                        </div>
+                    </div>  
+                </div> 
             </div>
         )
     }

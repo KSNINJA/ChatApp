@@ -41,15 +41,9 @@ export class LoggedInContent extends React.Component{
         callFunc = callFunc.bind(this);
     }
     render(){
-        /*return (
-            <div>
-                <h1>Hi, {this.props.user}</h1>
-                <button onClick={this.signOut}>Sign Out</button>
-            </div>
-        )*/
         return(
             <div style={{ position: relative }}>
-                <ChatListAndOthers changeMessagingEnv={ this.changeMessagingEnv } username={this.props.username} userId={this.props.userId} updates={this.state.updates} />
+                <ChatListAndOthers changeMessagingEnv={ this.changeMessagingEnv } username={this.props.username} userId={this.props.userId} updates={this.state.updates} logout={this.signOut} />
                 { 
                     this.state.currentMessagingChatRecipients ?  <MessagingEnv recipientsIdArr={this.state.currentMessagingChatRecipients} username={this.props.username} userId={this.props.userId} /> : <EmptyMessagingEnv />
                 }
