@@ -16,17 +16,19 @@ export class MessagingEnv extends React.Component{
         const date = new Date;
         const messageTime =  date.getHours() + ":" + date.getMinutes();
         const messageDate = date.getDate() + '/' + (date.getMonth() + 1 + '/') + date.getFullYear();
-        const messageObj = {
+        let messageObj = {
             message: messageToBeSent,
             time: messageTime,
             date: messageDate,
             sender: this.props.username,
             recipientsIdArr: this.props.recipientsIdArr
         }
+        console.log(messageObj);
+        messageObj = JSON.stringify(messageObj);
         $.ajax({
             url: 'http://localhost:8080/post-message',
             type: 'POST',
-            data: { 
+            data: {
                 messageObj: messageObj
             },
             success: (req, res) => {

@@ -14,7 +14,6 @@ export class LoggedInContent extends React.Component{
         };
         this.signOut = this.signOut.bind(this);
         this.changeMessagingEnv = this.changeMessagingEnv.bind(this);
-
     }
     signOut(){
         this.props.changeAuthStatus('false', null);
@@ -29,7 +28,6 @@ export class LoggedInContent extends React.Component{
     componentDidMount(){
         firebase.database().ref('/users/' + this.props.userId).on('value', function(snapshot) {
             if(!snapshot.val()) return;
-            debugger;
             callFunc(snapshot);
         }).bind(this);
         let callFunc = (snapshot) => {
@@ -44,10 +42,10 @@ export class LoggedInContent extends React.Component{
         return(
             <div style={{ position: relative }}>
                 <ChatListAndOthers changeMessagingEnv={ this.changeMessagingEnv } username={this.props.username} userId={this.props.userId} updates={this.state.updates} logout={this.signOut} />
-                { 
+                {
                     this.state.currentMessagingChatRecipients ?  <MessagingEnv recipientsIdArr={this.state.currentMessagingChatRecipients} username={this.props.username} userId={this.props.userId} /> : <EmptyMessagingEnv />
                 }
             </div>
-        )        
+        )
     }
 }

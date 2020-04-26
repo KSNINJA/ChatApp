@@ -9,7 +9,6 @@ export class SearchPeopleListItem extends React.Component{
         let recipientsIdArr = '';
         if( this.props.userId < this.props.personUserId ) // arranging in asc order
         {
-            debugger;
             recipientsIdArr += this.props.userId + ',';
             recipientsIdArr += this.props.personUserId;
         }
@@ -17,6 +16,7 @@ export class SearchPeopleListItem extends React.Component{
             recipientsIdArr += this.props.personUserId + ',';
             recipientsIdArr += this.props.userId;
         }
+        console.log(1231234134, recipientsIdArr)
         this.props.changeMessagingEnv(recipientsIdArr);
         this.props.changeActivity('chatList'); // Go to chatlist instead of newchat-window
     }

@@ -34,7 +34,7 @@ export class CreateNewChatWindow extends React.Component{
             url: 'http://localhost:8080/search-people-with-username',
             type: 'POST',
             data: { search: searchedPhrase },
-            beforeSend : function()    {          
+            beforeSend : function()    {
                 if(currentRequest != null) {
                     currentRequest.abort();
                 }

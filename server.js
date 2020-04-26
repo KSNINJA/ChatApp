@@ -8,6 +8,13 @@ var firebase = require('firebase/app');
 var database = require('firebase/database');
 var config = {
     //put your app config here
+    apiKey: "AIzaSyD_VFT96Y1N9Qb-e-Tnz1cNptYY3wiqBBA",
+    authDomain: "react-chatapp-5679f.firebaseapp.com",
+    databaseURL: "https://react-chatapp-5679f.firebaseio.com",
+    projectId: "react-chatapp-5679f",
+    storageBucket: "react-chatapp-5679f.appspot.com",
+    messagingSenderId: "156002024362",
+    appId: "1:156002024362:web:82eadbaac2e3da2cecc9d3"
 };
 firebase.initializeApp(config);
 
@@ -16,7 +23,7 @@ firebase.initializeApp(config);
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Kartik5795",
+    password: "kartik",
     database: "auth"
 });
 
@@ -24,7 +31,7 @@ app.post('/signin', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); //enter file name as 2nd param
     data = req.body;
     //for testing
-    /*con.query('SELECT * FROM userInfo',function(err,result){  
+    /*con.query('SELECT * FROM userInfo',function(err,result){
         res.send(result);
         res.end();
     });*/
@@ -45,8 +52,10 @@ app.post('/signin', (req, res) => {
 app.post('/signup', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); //enter file name as 2nd param
     const data = req.body;
+    console.log(data);
     var sql = "SELECT * FROM userInfo WHERE username='" + data.username + "' AND pass='" + data.pass + "'";
     con.query(sql, function(err, result){
+        console.log(err, result);
         if(result.length == 0)
         {
             sql = "INSERT INTO userInfo ( username, pass ) VALUES ('" + data.username + "' , '" + data.pass + "')";
@@ -55,7 +64,7 @@ app.post('/signup', (req, res) => {
                 res.end();
                 return;
             });
-        }   
+        }
         else{
             res.write('false');
             res.end();
@@ -85,10 +94,12 @@ app.post('/search-people-with-id', (req, res) => {
 
 app.post('/post-message', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); //enter file name as 2nd param
-    const messageObj = req.body.messageObj;
+    let messageObj = req.body.messageObj;
+    messageObj = JSON.parse(messageObj)
+    console.log(messageObj)
     let chatID;
     let sql;
-    let recipientsIdArr = req.body.messageObj.recipientsIdArr;
+    let recipientsIdArr = messageObj.recipientsIdArr;
     sql = "SELECT * FROM chats WHERE recipients = '," + recipientsIdArr + ",'";
     con.query(sql, (err, result) => {
         if(result.length === 0){
@@ -123,7 +134,7 @@ app.post('/post-message', (req, res) => {
                 if(!snapshot.val()){
                     prevNumberOfUpdates = 0;
                     key = firebase.database().ref('/users/' + recipient).push().key;
-                } 
+                }
                 else {
                     key = Object.keys(snapshot.val())[0];
                     prevNumberOfUpdates = Object.values(snapshot.val())[0].prevNumberOfUpdates;
@@ -164,7 +175,7 @@ app.post('/get-chat-with-id', (req, res) => {
     });
 })
 
-app.post('/fetch-messages', (req, res) => {    
+app.post('/fetch-messages', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); //enter file name as 2nd param
     const recipients = req.body.recipientsIdArr;
     let sql = "SELECT chatId FROM chats WHERE recipients='," + recipients + ",'";

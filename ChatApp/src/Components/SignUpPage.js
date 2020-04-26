@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery'; 
+import $ from 'jquery';
 
 export class SignUpPage extends React.Component{
     constructor(props){
@@ -46,6 +46,7 @@ export class SignUpPage extends React.Component{
                     }
                 },
                 error: function(err){
+                  console.log('heelloojgdwjhf')
                     this.props.responseMessage(err ,'rgb(208,30,53)');
                 }
             });
